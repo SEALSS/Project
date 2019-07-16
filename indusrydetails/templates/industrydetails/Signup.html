@@ -1,0 +1,397 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>SB Admin 2 - Register</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{% static "industrydetails/vendor/fontawesome-free/css/all.min.css" %}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+
+  <!-- Custom styles for this template-->
+  <link href="{% static "industrydetails/css/sb-admin-2.min.css" %}" rel="stylesheet">
+
+
+
+
+<style>
+    .bg-1 {
+        background-color: #1abc9c;
+        color: #ffffff;
+    }
+    .bg-2 {
+        background-color: #474e5d;
+        color: #ffffff;
+    }
+    .bg-3 {
+        background-color: #ffffff;
+        color: #555555;
+    }
+    .container-fluid {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+
+
+.header {
+  width:90%;
+    margin-top:7%;
+    height:600px;
+    background: #F0F0F0;
+    text-align: center;
+    border: 1px solid #B0C4DE;
+    border-bottom: none;
+    border-radius: 10px 10px 0px 0px;
+    padding: 20px;
+}
+
+
+
+
+input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+input[type=tel] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+
+
+input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+
+
+input[type=submit] {
+    width: 40%;
+    background-color: CornflowerBlue ; {# CornflowerBlue #}
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.box1 {
+
+  margin:4%;
+  height:700px;
+  width:45%;
+    border-radius: 5px;
+    background-color: white;
+    padding: 20px;
+
+}
+
+
+.container {
+    padding: 1px;
+}
+
+/* The message box is shown when the user clicks on the password field */
+#message {
+    display:none;
+    background: black;
+    opacity: 0.9 ;
+    color: #000;
+    position: relative;
+    padding: 20px;
+    border: 1px solid black;
+    margin-top: -210px ;
+    margin-left: 600px ;
+    width: 300px ;
+    border-radius: 10px ;
+}
+
+#message p {
+  margin-top:3px;
+    font-size: 15px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+    color: green;
+}
+
+.valid:before {
+    position: relative;
+    left: 0px;
+    content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+    color: #e74242;
+}
+
+.invalid:before {
+    position: relative;
+    left:0px;
+    content: "✖";
+}
+
+.header1 {
+    width: 100%;
+    padding: 12px 20px 0 0;
+    {#margin: 8px;#}
+    opacity: 0.8;
+    display: inline-block;
+    border: 1px solid #e74242;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height:30px;
+
+}
+
+
+
+</style>
+
+
+
+</head>
+
+<body class="bg-gradient-primary">
+<center>
+  <div class="container" style="width: 50% ;">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+          <div class="col-lg-7">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+              </div>
+
+
+                {% if err %}
+               <div class="header1" >
+                   <p style="text-align: center ; font-size:15px;margin-top:-8px;color: #e74242;">
+                {{err}}
+                   </p>
+                     </div>
+            {% endif %}
+
+
+            {% if errmail %}
+               <div class="header1" >
+                   <p style=" text-align: center ; font-size:15px;margin-top:-8px;color: #e74242;">
+                {{errmail}}
+                   </p>
+                     </div>
+            {% endif %}
+
+
+
+              <form class="user" action="{% url 'ssignupdetails' %}" method="POST">
+                  {% csrf_token %}
+
+                  <div class="form-group ">
+                  <input type="email" class="form-control form-control-user" id="email"  name="email" placeholder="Email Address" REQUIRED autofocus>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" name="username" MAXLENGTH="20" minlength="3" placeholder="Username"  required AUTOFOCUS>
+                  </div>
+
+
+                <div class="form-group ">
+                  <input type="tel" class="form-control form-control-user" name="number" placeholder="Mobile Number" pattern="[7-9][0-9]{9}" MAXLENGTH="10"  required autofocus>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title =" Must contain at least one number and one uppercase and lowercase letter,one special character and at least 8 or more characters" required autofocus> <!-- title="Must contain at least one number and one uppercase and lowercase letter,one special character and at least 8 or more characters"-->
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="password" class="form-control form-control-user" name="confirmpassword" placeholder="Repeat Password">
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-user btn-block">
+                  Register Account
+                </button>
+                <hr>
+
+              <div class="text-center">
+                <a class="small" href="Signin.html">Already have an account? Sigin!</a>
+              </div>
+
+
+
+
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</center>
+
+
+{#  =============================================Message=========================================================================#}
+    <div id="message">
+
+        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+        <p id="number" class="invalid">A <b>number</b></p>
+        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+
+    </div>
+
+{#  =============================================Message=========================================================================#}
+
+
+
+
+
+
+
+
+
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{% static "industrydetails/vendor/jquery/jquery.min.js" %}"></script>
+  <script src="{% static "industrydetails/vendor/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{% static "industrydetails/vendor/jquery-easing/jquery.easing.min.js" %}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="{% static "industrydetails/js/sb-admin-2.min.js" %}"></script>
+
+
+{#  =================================Password Message===================================#}
+
+  <script>
+
+    $(document).ready(function(){
+
+        {#$('.form-control').tooltip({title: "", trigger: "focus"});#}
+
+    });
+</script>
+
+
+{#  =================================Password Message===================================#}
+
+
+
+    <script>
+        var myInput = document.getElementById("password");
+        var myInput1 = document.getElementById("email");
+        var letter = document.getElementById("letter");
+        var capital = document.getElementById("capital");
+        var number = document.getElementById("number");
+        var length = document.getElementById("length");
+        {#var display = document.getElementById("message").style.display = "block";#}
+
+
+        // When the user clicks on the password field, show the message box
+        myInput.onfocus = function() {
+            document.getElementById("message").style.display = "block";
+        }
+
+        // When the user clicks outside of the password field, hide the message box
+        myInput.onblur = function() {
+            document.getElementById("message").style.display = "none";
+        }
+
+        // When the user starts to type something inside the password field
+        myInput.onkeyup = function() {
+          // Validate lowercase letters
+          var lowerCaseLetters = /[a-z]/g;
+          if(myInput.value.match(lowerCaseLetters)) {
+            letter.classList.remove("invalid");
+            letter.classList.add("valid");
+          } else {
+            letter.classList.remove("valid");
+            letter.classList.add("invalid");
+          }
+
+          // Validate capital letters
+          var upperCaseLetters = /[A-Z]/g;
+          if(myInput.value.match(upperCaseLetters)) {
+            capital.classList.remove("invalid");
+            capital.classList.add("valid");
+          } else {
+            capital.classList.remove("valid");
+            capital.classList.add("invalid");
+          }
+
+          // Validate numbers
+          var numbers = /[0-9]/g;
+          if(myInput.value.match(numbers)) {
+            number.classList.remove("invalid");
+            number.classList.add("valid");
+          } else {
+            number.classList.remove("valid");
+            number.classList.add("invalid");
+          }
+
+          // Validate length
+          if(myInput.value.length >= 8) {
+            length.classList.remove("invalid");
+            length.classList.add("valid");
+          } else {
+            length.classList.remove("valid");
+            length.classList.add("invalid");
+          }
+        }
+
+
+    </script>
+
+</body>
+
+</html>

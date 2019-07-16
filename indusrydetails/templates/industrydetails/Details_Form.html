@@ -1,0 +1,314 @@
+{% load staticfiles %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<title>Welcome</title>
+<meta charset="UTF-8">
+<meta charset="utf-8">
+<!-- <meta charset="utf-8" http-equiv="Content-Type" content="text/css"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static "industrydetails/bootstrapforms/css/convert5.css" %}" >
+<link rel="stylesheet" href="{% static "industrydetails/bootstrapforms/font/font-lato.css" %}" >
+<link rel="stylesheet" href="{% static "industrydetails/bootstrapforms/font/ajax-font.css" %}" >
+<link rel="stylesheet" href="{% static "industrydetails/bootstrapforms/bootstrap/css/bootstrap.css" %}" >
+<script src="{% static "industrydetails/bootstrapforms/jq/jquery-3.3.1.js" %} "></script>
+<script src="{% static "industrydetails/bootstrapforms/bootstrap/js/bootstrap.js" %}" ></script>
+
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body, html {
+  height: 100%;
+  color: #777;
+  line-height: 1.8;
+}
+
+/* Create a Parallax Effect */
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* First image (Logo. Full height) */
+.bgimg-1 {
+  background-image: url("{% static "industrydetails/bootstrapforms/img/Home.jpeg" %}") ;
+  min-height: 100%;
+}
+
+#logo-img{
+	width: 150px ;
+	height: 150px ;
+	margin-left: 100px ;
+}
+
+.w3-wide {letter-spacing: 10px;}
+.w3-hover-opacity {cursor: pointer;}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1600px) {
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: scroll;
+    min-height: 400px;
+  }
+}
+</style>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top text-light">
+  <div class="w3-bar" id="myNavbar">
+    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <a href="#home" class="w3-bar-item w3-button"><i class="fa fa-home"></i>HOME</a>
+    <a href="#details" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-globe"></i> DETAILS </a>
+      <a href="#infrastructure" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-exchange"></i> INFRASTRUCTURE </a>
+
+    <!--
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
+      <i class="fa fa-search"></i>
+    </a>
+    -->
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+    <a href="#details" class="w3-bar-item w3-button" onclick="toggleFunction()">DETAILS</a>
+    <a href="#infrastructure" class="w3-bar-item w3-button" onclick="toggleFunction()">INFRASTRUCTURE</a>
+
+    <!-- <a href="#" class="w3-bar-item w3-button">SEARCH</a> -->
+  
+  </div>
+</div>
+
+<!-- First Parallax Image with Logo Text -->
+<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+  <div class="w3-display-middle" style="white-space:nowrap;">
+{#	<img id="logo-img" src="{% static "industrydetails/bootstrapforms/img/logo.png" %} ">#}
+	<br><br>
+    <center><span class="w3-center w3-padding-large w3-black w3-xxxlarge w3-wide w3-animate-opacity "><span class="w3-hide-small">DheWish</span> </span></center>
+  </div>
+</div>
+
+
+{#============================Full Page =======================#}
+
+<div>
+    <form action="{% url 'submitdetails' %}" method="POST">
+
+
+    {#    =================================DETAILS============================================== #}
+
+<div class="w3-content w3-container w3-padding-64" id="details">
+
+
+
+  <h3 class="w3-center">Company Details</h3>
+        {% csrf_token %}
+
+    <label class="mr-sm-2">Company Name <sup style="color:red ;">*</sup> :</label>
+    <input type="text" name="company_name" id="company_name" class="form-control form-control-sm mr-sm-5" placeholder="Company Name..." required><br>
+
+    <label class="mr-sm-2">Business entity <sup style="color:red ;">*</sup> :</label>
+    <input type="text" name="business_entity" class="form-control form-control-sm mr-sm-5" placeholder="Business entity..." required>
+    <p style="font-size: 12px">Ex: Prop, Partner, Pvt. Ltd</p>
+
+    <label class="mr-sm-2">Company Address <sup style="color:red ;">*</sup> :</label>
+    <label style="margin-left: 35% ;" class="mr-sm-2">Pincode <sup style="color:red ;">*</sup> :</label>
+
+    <input style="width:400px;" type="text" name="company_address" class="form-control form-control-sm mr-sm-5" placeholder="Company Address..." required>
+    <input style="margin-left: 50% ;margin-top: -3%;  width:400px;" type="text" name="pincode" class="form-control form-control-sm mr-sm-5" placeholder="Pincode..." required><br>
+
+    <label class="mr-sm-2">About <sup style="color:red ;"></sup> :</label>
+    <textarea cols="4" rows="6" name="about" class="form-control form-control-sm mr-sm-5"  placeholder="About Company.....!" maxlength="200"></textarea><br>
+
+    <label class="mr-sm-2">Key Contact <sup style="color:red ;">*</sup> :</label>
+    <input type="text" name="keycontact" class="form-control form-control-sm mr-sm-5" placeholder="Name..." required><br>
+
+    <label class="mr-sm-2">Website <sup style="color:red ;">*</sup> :</label>
+    <input type="text" name="website" class="form-control form-control-sm mr-sm-5" placeholder="Website Name..." required><br>
+
+    <label class="mr-sm-2">Founded <sup style="color:red ;">*</sup> :</label>
+    <input style="width: 40% ;" type="date" class="form-control form-control-sm mr-sm-5" name="founded_date" placeholder="" required><br>
+
+    <label class="mr-sm-2">No. of Employees <sup style="color:red ;">*</sup> :</label>
+    <input style="width: 40% ;" type="number" name="number_of_employees" class="form-control form-control-sm mr-sm-5" placeholder="Employees..." required><br>
+
+    <label class="mr-sm-2">Transport Type<sup style="color:red ;">*</sup> :</label>
+    <select style="width: 40%;" name="transport_type" class="form-control form-control-sm mr-sm-5">
+      <option value="Road">Road</option>
+      <option value="Sea">Sea</option>
+      <option value="Train">Train</option>
+    </select><br>
+
+    <label class="mr-sm-2">Major Clients/Customers<sup style="color:red ;">*</sup> :</label>
+    <input type="text" class="form-control form-control-sm mr-sm-5" name="clients" placeholder="Clients..." required><br>
+
+    <label class="mr-sm-2">Working Hours<sup style="color:red ;"></sup> :</label><br>
+    <div style="margin-left : 5% ;">
+
+        <label class="mr-sm-2">Office<sup style="color:red ;">*</sup> :</label><br>
+        <label class="mr-sm-2">From<sup style="color:red ;"></sup> :</label>
+        <label style="margin-left:45%;" class="mr-sm-2">To<sup style="color:red ;"></sup> :</label>
+
+        <input style="width: 40% ;" type="time" name="office_time_from" class="form-control form-control-sm mr-sm-5" placeholder="Website Name..." required>
+        <input style="width: 40% ;margin-top: -3%; margin-left: 50%" type="time" name="office_time_to" class="form-control form-control-sm mr-sm-5" placeholder="Website Name..." required><br>
+
+        <label class="mr-sm-2">Factory<sup style="color:red ;">*</sup> :</label><br>
+        <label class="mr-sm-2">From<sup style="color:red ;"></sup> :</label>
+        <label style="margin-left:45%;" class="mr-sm-2">To<sup style="color:red ;"></sup> :</label>
+
+        <input style="width: 40% ;" type="time" name="factory_time_from" class="form-control form-control-sm mr-sm-5" placeholder="Website Name..." required>
+        <input style="width: 40% ;margin-top: -3%; margin-left: 50%" type="time" name="factory_time_to" class="form-control form-control-sm mr-sm-5" placeholder="Website Name..." required><br>
+
+    </div>
+
+    <label class="mr-sm-2">Core Operation<sup style="color:red ;">*</sup> :</label>
+    <input type="text" class="form-control form-control-sm mr-sm-5" name="core_operation" placeholder="Operation..." required><br>
+
+    <label class="mr-sm-2">Certifications<sup style="color:red ;">*</sup> :</label>
+    <input type="text" class="form-control form-control-sm mr-sm-5" name="certifications" placeholder="Certifications..." required><br>
+
+    <label class="mr-sm-2">Awards and Achievements<sup style="color:red ;">*</sup> :</label>
+    <input type="text" class="form-control form-control-sm mr-sm-5" name="awards" placeholder="Awards..." required><br>
+
+
+
+
+
+
+
+
+
+
+
+
+  <br>
+    {#    =================================DETAILS============================================== #}
+
+
+
+
+</div>
+
+
+<hr style="height: 10px ;">
+
+
+
+
+<!-- ===============Display nav bar in division ============= -->
+
+
+
+
+<!-- ===============Display nav bar in division ============= -->
+
+
+
+
+<!-- ==============Container (Infrastructure Section)============================ -->
+<div class="w3-content w3-container w3-padding-64" id="infrastructure">
+
+	<br><br>
+  <h3 class="w3-center">INFRASTRUCTURE</h3><br>
+    <div class="w3-content w3-container w3-padding-64" id="about">
+
+    <label class="mr-sm-2">Overall Area<sup style="color:red ;"></sup> :</label>
+        <div class="input-group mb-3">
+            {% csrf_token %}
+          <input type="number" class="form-control" placeholder="Area..." name="overall_area" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <span class="input-group-text" id="basic-addon2">sq. ft</span>
+          </div>
+        </div>
+
+
+         <label class="mr-sm-2">Built Up Area<sup style="color:red ;"></sup> :</label>
+        <div class="input-group mb-3">
+          <input type="number" class="form-control" placeholder="Area..." name="built_area" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <span class="input-group-text" id="basic-addon2">sq. ft</span>
+          </div>
+        </div>
+
+        <label class="mr-sm-2">Shop Floor Area<sup style="color:red ;"></sup> :</label>
+        <div class="input-group mb-3">
+          <input type="number" class="form-control" placeholder="Area..." name="shop_area" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <span class="input-group-text" id="basic-addon2">sq. ft</span>
+          </div>
+        </div>
+
+
+
+    </div>
+
+</div>
+{#<hr style="height:10px ;">#}
+{#=====================Infrastructure===========================#}
+
+    <center><input type="submit" class="btn btn-dark btn-user btn-block w-25 p-2 "></center>
+    </form>
+</div>
+{#============================Full Page =======================#}
+
+
+ 
+
+  <br><br>
+
+
+
+
+
+
+
+    <!-- =======================Dropdown button========================= -->
+
+
+
+
+
+
+
+<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
+  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <br><br>
+</footer>
+ 
+<script>
+
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+// Change style of navbar on scroll
+window.onscroll = function() {myFunction()};
+function myFunction() {
+    var navbar = document.getElementById("myNavbar");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+    } else {
+        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+    }
+}
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function toggleFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+</body>
+</html>
