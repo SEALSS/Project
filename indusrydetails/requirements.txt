@@ -75,7 +75,7 @@ pytest==4.2.0
 python-keystoneclient==3.19.0
 python-novaclient==2.35.0
 pytz==2018.4
-PyYAML==5.1
+PyYAML==5.4
 readme-renderer==24.0
 requests==2.21.0
 requests-cache==0.4.13
